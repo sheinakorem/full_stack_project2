@@ -8,7 +8,6 @@ var level = 0;
 
 function updateScore() {
 
-  
   var username = localStorage.getItem("loggedInUsername");
   var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
