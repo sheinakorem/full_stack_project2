@@ -1,0 +1,48 @@
+body{
+    background-image:url( "image/background.jpg");
+    background-size: cover; 
+    
+}
+ h1{
+ color: #fe7f6e;
+ margin: 0;
+ padding: 0;
+}
+.header{
+  align-items: center;
+  display: inline-flex;
+  background-color: #fef5f3;
+  border-radius: 50px;
+  padding:10px;
+}
+
+.header button{
+  font-size: 1rem;
+    border: 3px solid #fe7f6e;
+    border-radius: 50px;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #fe7f6e;
+    color: #fef5f3;
+   
+    margin-left: 15px;
+}
+
+.gamesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; 
+
+}
+.gameIMG{
+ 
+  height: 250px;
+  width:250px;
+  margin-top: 10px;
+  border-radius: 10%;
+}
+
+.signUpBtn, .signInBtn {
+  cursor: pointer; 
+}
