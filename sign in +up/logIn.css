@@ -1,0 +1,38 @@
+
+body {
+    background-image: url("/image/background.jpg");
+    background-size: cover;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  body .container {
+    margin-top: 15%;
+  }
+  
+  h2 {
+    color: #fe7f6e;
+    margin: 10px;
+    padding: 0;
+    font-size: 2rem;
+    
+  }
+  
+  #loginForm label{
+    font-size: 1rem;
+    color: #fe7f6e;
+  }
+  
+  #loginForm button{
+    font-size: 1rem;
+      border: 3px solid #fe7f6e;
+      border-radius: 50px;
+      display: inline-flex;
+      justify-content: center;
+      background-color: #fe7f6e;
+      color: #fef5f3;
+  }
+  

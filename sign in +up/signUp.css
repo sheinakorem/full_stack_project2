@@ -1,0 +1,44 @@
+
+
+body {
+  background-image: url("/image/background.jpg");
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+a{
+  margin-top: 20px;
+}
+h2 {
+  color: #fe7f6e;
+  padding: 0;
+  font-size: 2rem;
+  
+}
+
+#signUpForm{
+  margin-top: 20%;
+}
+
+#signUpForm label{
+  font-size: 1rem;
+  color: #fe7f6e;
+  
+}
+
+#signUpForm button{
+  font-size: 1rem;
+    border-radius: 50px;
+    display: inline-block;
+    justify-content: center;
+
+    border: 3px solid #fe7f6e;
+    background-color: #fe7f6e;
+    color: #fef5f3;
+
+    margin-top: 5%;
+}
+
