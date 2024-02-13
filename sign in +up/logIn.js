@@ -14,7 +14,7 @@ function login() {
         // Set the username in local storage for use in profile page
         localStorage.setItem("loggedInUsername", username);
         // Redirect to profile page
-        window.location.href = "/profile.html";
+        window.location.href = "profile.html";
     } else {
         document.getElementById("loginErrorMessage").innerHTML = "Invalid username or password.";
     }
