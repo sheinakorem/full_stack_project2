@@ -19,3 +19,8 @@ body {
     font-size: 2rem;
     
   }
+
+  .gameIMG{
+    height: 100px;
+    width: 100px;
+  }

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     var scoreElement = document.getElementById("score");
     var scoreMessage = document.createElement("p");
-    scoreElement.textContent =  score + "points";
+    scoreElement.textContent =  score + " points";
     scoreElement.appendChild(scoreMessage);
    
   });

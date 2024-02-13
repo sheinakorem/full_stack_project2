@@ -18,4 +18,6 @@ function login() {
     } else {
         document.getElementById("loginErrorMessage").innerHTML = "Invalid username or password.";
     }
+
+
 }

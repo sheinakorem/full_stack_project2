@@ -1,4 +1,3 @@
-
 var buttonColours = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
@@ -7,35 +6,22 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-var score;
+function updateScore() {
+  var username = localStorage.getItem("loggedInUsername");
+  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
-function updateScore(score) {
-  var username = getCurrentUsername(); 
-  
-  if (username) {
-      var scores = JSON.parse(localStorage.getItem("scores")) || {};
-      scores[username] = score;
-      localStorage.setItem("scores", JSON.stringify(scores));
+  // Find the account 
+  var accountIndex = accounts.findIndex(account => account.username === username);
+
+  if (accountIndex !== -1) { // If account exists
+    accounts[accountIndex].score = (accounts[accountIndex].score || 0) + 10; // Increment score by 10
+
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+  } else {
+    console.log("No account found with the provided username.");
   }
 }
-function getCurrentUsername() {
-  var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-  
-    // Check if the entered credentials match any existing account
-    var user = accounts.find(account => account.username === username && account.password === password );
-  return user;
-}
-function getScore() {
-  var username = getCurrentUsername();
-  var scores = JSON.parse(localStorage.getItem("scores")) || {};
-  return scores[username] || 0;
-}
 
-function calculateScore(levelsCompleted) {
-  // Assuming each level completed gives 10 points
-  var score = levelsCompleted * 10;
-  return score;
-}
 $(document).keypress(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
@@ -45,7 +31,6 @@ $(document).keypress(function() {
 });
 
 $(".btn").click(function() {
-
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
 
@@ -53,32 +38,30 @@ $(".btn").click(function() {
   animatePress(userChosenColour);
 
   checkAnswer(userClickedPattern.length-1);
-
 });
 
 function checkAnswer(currentLevel) {
-
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      if (userClickedPattern.length === gamePattern.length){
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-      }
-      updateScore(score);
-
-    } else {
-      playSound("wrong");
-      $("body").addClass("game-over");
-      $("#level-title").text("Game Over, Press Any Key to Restart");
-
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+    if (userClickedPattern.length === gamePattern.length){
       setTimeout(function () {
-        $("body").removeClass("game-over");
-      }, 200);
+        nextSequence();
+      }
+      , 1000);
+     
+      updateScore();
+      }
+  } else {
+    playSound("wrong");
+    $("body").addClass("game-over");
+    $("#level-title").text("Game Over, Press Any Key to Restart");
 
-      startOver();
-    }
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+
+    startOver();
+  }
 }
-
 
 function nextSequence() {
   userClickedPattern = [];
@@ -109,4 +92,3 @@ function startOver() {
   gamePattern = [];
   started = false;
 }
-
