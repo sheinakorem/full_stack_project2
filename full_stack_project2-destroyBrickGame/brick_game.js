@@ -12,9 +12,10 @@ let paddleWidth = 60;   // for more complicate level do it smaller
 let rightPressed = false;
 let leftPressed = false; 
 let brickHeight =20;
-let brickWidth = 60;
-let colBricksNumber = 7;
+let brickWidth = 70;
+let colBricksNumber = 5;
 let rowBrickNumber = 3;
+let score =0;
 const brick = [];
 for (let c=0; c<colBricksNumber; c++){
     brick[c]=[];
@@ -29,8 +30,8 @@ function draw_bricks(){
     
         for (let r=0; r<rowBrickNumber; r++){
             let offsetLeft = 10;
-            let offsetTop = 10;
-            let padding = 10;
+            let offsetTop = 30;
+            let padding = 20;
             let xBrick = c * (brickWidth + padding) + offsetLeft; 
             let yBrick = r * (brickHeight + padding) + offsetTop;
             if( brick[c][r].status===1){
@@ -78,9 +79,22 @@ function collision_detection(){
             {
                 brick[c][r].status = 0;
                 dy = -dy;
-            }}
+                score+= 1;
+            }
+            if(score === colBricksNumber * rowBrickNumber){
+                alert("You Win!!");
+                document.location.reload();
+                clearInterval(interval);  // to stop the game
+
+            }
+        }
 }}
 
+function drawScore() {
+    ctx.font = "16px Verdana";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText(`Score: ${score}`, 5, 20);
+  }
 
 
 
@@ -105,6 +119,7 @@ function draw(){
     drawPaddle();
     draw_bricks();
     collision_detection();
+    drawScore();
     if(x + dx < radius_circle || x+dx > canvas.width - radius_circle){   //if the ball go out the canvas right or left, change its direction 
         dx= -dx;
     }
